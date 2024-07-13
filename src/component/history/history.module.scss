@@ -13,3 +13,35 @@
     scrollbar-width: none;
   }
 }
+
+.fio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+
+  input{
+    margin: 10px;
+    border: none;
+    border-bottom: 2px solid #d3d3d3;
+    cursor: initial;
+    font-size: 1em;
+    outline: none;
+    text-align: center;
+    padding: 5px;
+  }
+
+  button{
+    padding: 5px 10px;
+    border: 1px solid grey;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+}
+
+.border{
+  margin: 20px;
+  border-radius: 20px;
+  border: 2px solid #c0c0c0;
+  padding: 20px;
+}

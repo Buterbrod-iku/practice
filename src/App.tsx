@@ -24,7 +24,7 @@ function App() {
         </div>
 
         {
-            open ? (<FormAdd />) : (<History />)
+            open ? (<FormAdd openForm={openForm} />) : (<History />)
         }
 
 

@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import style from "./formAdd.module.scss";
+import ApiBudget from "../../api/badget";
 
-const FormAdd = () => {
+const FormAdd = ({openForm}) => {
     const [formData, setFormData] = useState({
-        title: '',
-        amount: '',
+        name: '',
+        fio: '',
+        money: '',
         date: '',
         type: '1' // по умолчанию тип "Доход"
     });
@@ -17,9 +19,20 @@ const FormAdd = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData); // выводим объект с данными формы в консоль
+
+        const formattedData = {
+            ...formData,
+            type: formData.type === '1', // Преобразуем '1' в true и '0' в false
+            money: parseFloat(formData.money), // Преобразуем money в число
+            date: new Date(formData.date).toISOString() // Преобразуем дату в ISO формат
+        };
+
+        console.log(formattedData);
+
+        await ApiBudget.sendBudget(formattedData)
+        openForm(e)
     };
 
     return (
@@ -27,21 +40,30 @@ const FormAdd = () => {
             <h1>Введите данные</h1>
 
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Название</label>
+                <label htmlFor="name">Название</label>
                 <input
                     type="text"
-                    id="title"
-                    name="title"
-                    value={formData.title}
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleInputChange}
                 />
 
-                <label htmlFor="amount">Сумма</label>
+                <label htmlFor="fio">ФИО</label>
+                <input
+                    type="text"
+                    id="fio"
+                    name="fio"
+                    value={formData.fio}
+                    onChange={handleInputChange}
+                />
+
+                <label htmlFor="money">Сумма</label>
                 <input
                     type="number"
-                    id="amount"
-                    name="amount"
-                    value={formData.amount}
+                    id="money"
+                    name="money"
+                    value={formData.money}
                     onChange={handleInputChange}
                 />
 

@@ -24,5 +24,30 @@
     align-items: center;
     flex-direction: column;
     margin: 20px;
+
+    input, select{
+      margin: 10px;
+      border: none;
+      border-bottom: 2px solid #d3d3d3;
+      cursor: initial;
+      font-size: 1em;
+      outline: none;
+      text-align: center;
+      padding: 5px;
+    }
+
+    label{
+      font-size: 1.2em;
+    }
+
+    button{
+      padding: 10px 20px;
+      background: #75f375;
+      border: 1px solid #949494;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
   }
 }
